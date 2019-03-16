@@ -115,16 +115,19 @@ public class Array<E> {
             data[i] = data[i + 1];
         size--;
         data[size] = null;
+
+        if (size == data.length / 2)
+            resize(data.length / 2);
         return ret;
     }
 
     //
-    public E removeFrist(int index) {
+    public E removeFrist() {
         return removeByIndex(0);
     }
 
     //
-    public E removeLast(int index) {
+    public E removeLast() {
         return removeByIndex(size - 1);
     }
 
