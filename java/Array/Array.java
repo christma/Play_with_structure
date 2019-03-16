@@ -35,12 +35,6 @@ public class Array<E> {
 
     // add a new element to array at last
     public void addLast(E e) {
-//        if (size == data.length)
-//            throw new IllegalArgumentException("AddLast failed， Array is full ！！！");
-//
-//        data[size] = e;
-//        size++;
-
         add(size, e);
     }
 
@@ -51,7 +45,9 @@ public class Array<E> {
 
     public void add(int index, E e) {
         if (size == data.length)
-            throw new IllegalArgumentException("Add failed， Array is full ！！！");
+            resize(2 * data.length);
+
+
         if (index < 0 || index > size)
             throw new IllegalArgumentException("Add failed， Require index >=0 or index > size");
 
@@ -60,6 +56,16 @@ public class Array<E> {
         }
         data[index] = e;
         size++;
+    }
+
+    private void resize(int newCapacity) {
+        E[] newData = (E[]) new Object[newCapacity];
+
+        for (int i = 0; i < size; i++)
+            newData[i] = data[i];
+        data = newData;
+
+
     }
 
     // get element by index
@@ -79,7 +85,7 @@ public class Array<E> {
     //
     public boolean contains(E e) {
         for (int i = 0; i < size; i++) {
-            if (data[size] == e)
+            if (data[size].equals(e))
                 return true;
         }
         return false;
@@ -88,7 +94,7 @@ public class Array<E> {
     //
     public int find(E e) {
         for (int i = 0; i < size; i++) {
-            if (data[i] == e)
+            if (data[i].equals(e))
                 return i;
         }
         return -1;
@@ -108,6 +114,7 @@ public class Array<E> {
         for (int i = index; i < size; i++)
             data[i] = data[i + 1];
         size--;
+        data[size] = null;
         return ret;
     }
 
