@@ -69,11 +69,21 @@ public class Array<E> {
     }
 
     // get element by index
-    E get(int index) {
+    public E get(int index) {
         if (index < 0 || index > size)
             throw new IllegalArgumentException("Add failed， Require index >=0 or index >= size");
         return data[index];
     }
+
+    public E getLast() {
+        return get(size - 1);
+    }
+
+
+    public E getFirst() {
+        return get(0);
+    }
+
 
     // change element
     void set(int index, E e) {
@@ -106,12 +116,10 @@ public class Array<E> {
 
     //
     public E removeByIndex(int index) {
-        if (size == data.length)
-            throw new IllegalArgumentException("Add failed， Array is full ！！！");
         if (index < 0 || index >= size)
             throw new IllegalArgumentException("Add failed， Require index >=0 or index > size");
         E ret = data[index];
-        for (int i = index; i < size; i++)
+        for (int i = index + 1; i < size; i++)
             data[i] = data[i + 1];
         size--;
         data[size] = null;

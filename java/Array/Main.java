@@ -4,10 +4,10 @@ public class Main {
     public static void main(String[] args) {
 
 
-        Array array = new Array(20);
+        Array<Integer> array = new Array(10);
 
         for (int i = 0; i < 10; i++) {
-            array.addLast(i + "");
+            array.addLast(i);
         }
         System.out.println(array);
 
@@ -19,20 +19,24 @@ public class Main {
         array.addFirst(-1);
 
         System.out.println(array);
-
+//
         array.removeByIndex(11);
 
         System.out.println(array);
 
-
-        array.addFirst(100);
-
-        System.out.println(array);
-
-
-        array.removeElement(100);
+        array.removeFrist();
 
         System.out.println(array);
+//
+//
+//        array.addFirst(100);
+//
+//        System.out.println(array);
+//
+//
+//        array.removeElement(100);
+//
+//        System.out.println(array);
 
 
     }
