@@ -68,11 +68,10 @@ public class LoopQueue<E> implements Queue<E> {
         E[] newData = (E[]) new Object[newcapacity + 1];
         for (int i = 0; i < size; i++) {
             newData[i] = data[(i + front) % data.length];
-
-            data = newData;
-            front = 0;
-            tail = size;
         }
+        data = newData;
+        front = 0;
+        tail = size;
 
     }
 
