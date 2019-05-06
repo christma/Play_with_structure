@@ -11,6 +11,8 @@ public class Main {
 
         bst.preOrder();
 
+        bst.preOrderNR();
+
         System.out.println(bst.size());
     }
 }
