@@ -72,7 +72,6 @@ public class BST<E extends Comparable<E>> {
 
     }
 
-
     public boolean contains(E e) {
         return contains(root, e);
     }
@@ -87,4 +86,20 @@ public class BST<E extends Comparable<E>> {
         else
             return contains(node.right, e);
     }
+
+
+    public void preOrder() {
+        preOrder(root);
+    }
+
+    private void preOrder(Node node) {
+        if (node == null)
+            return;
+
+        System.out.println(node.e);
+        preOrder(node.left);
+        preOrder(node.right);
+    }
+
+
 }
