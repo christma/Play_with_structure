@@ -1,5 +1,7 @@
 package BST;
 
+import java.util.LinkedList;
+import java.util.Queue;
 import java.util.Stack;
 
 public class BST<E extends Comparable<E>> {
@@ -117,6 +119,22 @@ public class BST<E extends Comparable<E>> {
         preOrder(node.right);
     }
 
+    public void levelOrder() {
+        Queue<Node> q = new LinkedList<>();
+        q.add(root);
+
+        while (!q.isEmpty()) {
+            Node cur = q.remove();
+            System.out.println(cur.e);
+
+            if (cur.left != null)
+                q.add(cur.left);
+            if (cur.right != null)
+                q.add(cur.right);
+        }
+    }
+
+
     public void inOrder() {
         inOrder(root);
     }
@@ -142,5 +160,28 @@ public class BST<E extends Comparable<E>> {
         System.out.println(node.e);
     }
 
+    public E minimum(){
+        if(size == 0)
+            throw new IllegalArgumentException("BST is Empty");
+        return minimum(root).e;
+    }
+
+    private Node minimum(Node node){
+        if(node.left == null)
+            return node;
+        return minimum(node.left);
+    }
+
+    public E maxmum(){
+        if(size == 0)
+            throw new IllegalArgumentException("BST is Empty");
+        return maxmum(root).e;
+    }
+
+    private Node maxmum(Node node){
+        if(node.right == null)
+            return node;
+        return maxmum(node.right);
+    }
 
 }
